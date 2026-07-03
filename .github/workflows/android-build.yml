@@ -30,9 +30,8 @@ jobs:
 
     - name: Generate Debug Keystore Automatically
       run: |
-        # Membuat debug.keystore otomatis (default Android) jika tidak ditemukan di runner
-        mkdir -p ~/.android
-        keytool -genkey -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
+        # Membuat debug.keystore otomatis di root directory project
+        keytool -genkey -v -keystore ./debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
